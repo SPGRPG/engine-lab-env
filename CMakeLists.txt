@@ -2,10 +2,10 @@
 # engine-lab-env
 #--------------------------------------------------------------------------
 PROJECT(engine-lab-env)
-CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 
 MACRO(TARGET_PCH target path)
-IF(WIN32)
+IF(WIN32) 
 	IF(MSVC)
 		SET_TARGET_PROPERTIES(${target}
 			PROPERTIES 

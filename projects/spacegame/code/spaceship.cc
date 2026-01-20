@@ -5,18 +5,22 @@
 #include "render/physics.h"
 #include "render/debugrender.h"
 #include "render/particlesystem.h"
-
+#include <iostream>
+#include "core/Memory_ass.h"
 using namespace Input;
 using namespace glm;
 using namespace Render;
+AllocationMetrics s_AllocationMetrics;
 
 namespace Game
 {
 
 SpaceShip::SpaceShip()
 {
+
     uint32_t numParticles = 2048;
     this->particleEmitterLeft = new ParticleEmitter(numParticles);
+	
     this->particleEmitterLeft->data = {
         .origin = glm::vec4(this->position + (vec3(this->transform[2]) * emitterOffset),1),
         .dir = glm::vec4(glm::vec3(-this->transform[2]), 0),
@@ -44,10 +48,15 @@ SpaceShip::SpaceShip()
 void
 SpaceShip::Update(float dt)
 {
-    Mouse* mouse = Input::GetDefaultMouse();
-    Keyboard* kbd = Input::GetDefaultKeyboard();
+	
+	Mouse* mouse = Input::GetDefaultMouse();
+	
+    
+	Keyboard* kbd = Input::GetDefaultKeyboard();
+   
 
     Camera* cam = CameraManager::GetCamera(CAMERA_MAIN);
+    
 
     if (kbd->held[Key::W])
     {
@@ -101,6 +110,7 @@ SpaceShip::Update(float dt)
     this->particleEmitterRight->data.endSpeed = 0.0f + (3.0f * t);
     //this->particleEmitter->data.decayTime = 0.16f;//+ (0.01f  * t);
     //this->particleEmitter->data.randomTimeOffsetDist = 0.06f;/// +(0.01f * t);
+    
 }
 
 bool
