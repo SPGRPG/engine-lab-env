@@ -6,7 +6,7 @@
 #include "spacegameapp.h"
 #include <iostream>
 #include "core/Memory_ass.h"
-
+using namespace std;
 
 int
 main(int argc, const char** argv)
@@ -18,7 +18,8 @@ main(int argc, const char** argv)
 		app.Run();
 		app.Close();
 	}
-	PrintMemoryUsage();
+	main_memory->PrintMemoryUsage();
 	app.Exit();
+	return 0;
 	
 }

@@ -2,28 +2,43 @@
 #include <cstdint>
 #include <cstdlib>
 #include <iostream>
-struct AllocationMetrics
+#include <mutex>
+//struct AllocationMetrics
+//{
+//	
+//	
+//	
+//};
+//static AllocationMetrics s_AllocationMetrics;
+
+struct Memory
 {
+private:
 	uint32_t totalAllocated = 0;
 	uint32_t totalFreed = 0;
 	uint32_t CurrentUsage() { return totalAllocated - totalFreed; }
 	
-};
-static AllocationMetrics s_AllocationMetrics;
-void* operator new(size_t size,AllocationMetrics s_AllocationMetrics)
-{
-	s_AllocationMetrics.totalAllocated += size;
-	return malloc(size);
-}
-void operator delete(void* memory, size_t size,AllocationMetrics s_AllocationMetrics)
-{
-	s_AllocationMetrics.totalFreed += size;
-	free(memory);
-}
+	
+	Memory() {};
+	~Memory() {};
+public:
+	
+	
+	void setAllocated(const uint32_t& allocated)
+	{
+		this->totalAllocated += allocated;
+		
+	}
+	void setFreed(const uint32_t& freed)
+	{
+		this->totalFreed += freed;
+	}
+	void PrintMemoryUsage()
+	{
+		std::cout << "Current Memory Usage: " << CurrentUsage() << " bytes\n";
+	}
 
-static void PrintMemoryUsage()
-{
-	std::cout << "Current Memory Usage: " << s_AllocationMetrics.CurrentUsage() << " bytes\n";
-}
+};
+extern Memory* main_memory;
 
 

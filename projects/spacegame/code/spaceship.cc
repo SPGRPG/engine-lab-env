@@ -10,7 +10,17 @@
 using namespace Input;
 using namespace glm;
 using namespace Render;
-AllocationMetrics s_AllocationMetrics;
+
+void* operator new(size_t size)
+{
+    main_memory->setAllocated(size);
+    return malloc(size);
+}
+void operator delete(void* memory, size_t size)
+{
+  main_memory->setFreed(size);
+    free(memory);
+}
 
 namespace Game
 {
