@@ -11,14 +11,17 @@ using namespace Input;
 using namespace glm;
 using namespace Render;
 
+
 void* operator new(size_t size)
 {
-    main_memory->setAllocated(size);
+    Memory::GetInstance()->setAllocated(size);
+    //main_memory->setAllocated(size);
     return malloc(size);
 }
 void operator delete(void* memory, size_t size)
 {
-  main_memory->setFreed(size);
+    Memory::GetInstance()->setFreed(size);
+  //main_memory->setFreed(size);
     free(memory);
 }
 

@@ -7,18 +7,19 @@
 #include <iostream>
 #include "core/Memory_ass.h"
 using namespace std;
-
+Memory* Memory::instance;
 int
 main(int argc, const char** argv)
 {
 	
+
 	Game::SpaceGameApp app;
 	if (app.Open())
 	{
 		app.Run();
 		app.Close();
 	}
-	main_memory->PrintMemoryUsage();
+	Memory::GetInstance()->PrintMemoryUsage();
 	app.Exit();
 	return 0;
 	

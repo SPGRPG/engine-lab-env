@@ -14,6 +14,7 @@
 struct Memory
 {
 private:
+	static Memory* instance;
 	uint32_t totalAllocated = 0;
 	uint32_t totalFreed = 0;
 	uint32_t CurrentUsage() { return totalAllocated - totalFreed; }
@@ -22,6 +23,16 @@ private:
 	Memory() {};
 	~Memory() {};
 public:
+	Memory(const Memory&) = delete;
+	Memory& operator=(const Memory&) = delete;
+	static Memory* GetInstance()
+	{
+		if (instance == nullptr)
+		{
+			instance = new Memory();
+		}
+		return instance;
+	}
 	
 	
 	void setAllocated(const uint32_t& allocated)
@@ -39,6 +50,7 @@ public:
 	}
 
 };
-extern Memory* main_memory;
+//Memory* Memory::instance = nullptr;
+//extern Memory* main_memory;
 
 
