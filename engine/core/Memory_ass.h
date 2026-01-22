@@ -11,46 +11,47 @@
 //};
 //static AllocationMetrics s_AllocationMetrics;
 
-struct Memory
+class Memory
 {
 private:
 	static Memory* instance;
 	uint32_t totalAllocated = 0;
 	uint32_t totalFreed = 0;
-	uint32_t CurrentUsage() { return totalAllocated - totalFreed; }
+	uint32_t CurrentUsage() { return totalAllocated - totalFreed; };
 	
 	
-	Memory() {};
-	~Memory() {};
+	Memory()=default;
+	
 public:
 	Memory(const Memory&) = delete;
-	Memory& operator=(const Memory&) = delete;
-	static Memory* GetInstance()
+	//Memory& operator=(const Memory&) = delete;
+	static Memory &GetInstance()
+
 	{
-		if (instance == nullptr)
-		{
-			instance = new Memory();
-		}
+		static Memory instance;
 		return instance;
 	}
 	
 	
 	void setAllocated(const uint32_t& allocated)
 	{
-		this->totalAllocated += allocated;
+		totalAllocated += allocated;
 		
 	}
 	void setFreed(const uint32_t& freed)
 	{
-		this->totalFreed += freed;
+		totalFreed += freed;
 	}
 	void PrintMemoryUsage()
 	{
+		std::cout << "total allocated: " << totalAllocated << " bytes\n";
+		std::cout << "total freed: " << totalFreed << " bytes\n";
 		std::cout << "Current Memory Usage: " << CurrentUsage() << " bytes\n";
 	}
 
 };
-//Memory* Memory::instance = nullptr;
-//extern Memory* main_memory;
+
+
+
 
 

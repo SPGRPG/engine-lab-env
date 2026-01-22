@@ -20,6 +20,7 @@
 #include "render/physics.h"
 #include <chrono>
 #include "spaceship.h"
+#include <iostream>
 
 using namespace Display;
 using namespace Render;
@@ -233,6 +234,7 @@ SpaceGameApp::Run()
 void
 SpaceGameApp::Exit()
 {
+    
     this->window->Close();
 }
 

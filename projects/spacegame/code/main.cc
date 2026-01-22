@@ -7,7 +7,9 @@
 #include <iostream>
 #include "core/Memory_ass.h"
 using namespace std;
-Memory* Memory::instance;
+
+
+
 int
 main(int argc, const char** argv)
 {
@@ -19,8 +21,10 @@ main(int argc, const char** argv)
 		app.Run();
 		app.Close();
 	}
-	Memory::GetInstance()->PrintMemoryUsage();
+	
 	app.Exit();
+	
+	Memory::GetInstance().PrintMemoryUsage();
 	return 0;
 	
 }

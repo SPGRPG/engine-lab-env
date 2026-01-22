@@ -10,20 +10,21 @@
 using namespace Input;
 using namespace glm;
 using namespace Render;
-
-
-void* operator new(size_t size)
-{
-    Memory::GetInstance()->setAllocated(size);
-    //main_memory->setAllocated(size);
-    return malloc(size);
-}
-void operator delete(void* memory, size_t size)
-{
-    Memory::GetInstance()->setFreed(size);
-  //main_memory->setFreed(size);
-    free(memory);
-}
+//Memory* Memory::instance = Memory::GetInstance();
+//Memory* spaceship_memory = Memory::GetInstance();
+//void* operator new(size_t size)
+//{
+//   spaceship_memory->setAllocated(size);
+//    //Memory::instance->setAllocated(size);
+//    //main_memory->setAllocated(size);
+//    return malloc(size);
+//}
+//void operator delete(void* memory, size_t size)
+//{
+//    Memory::GetInstance()->setFreed(size);
+//  //main_memory->setFreed(size);
+//    free(memory);
+//}
 
 namespace Game
 {
