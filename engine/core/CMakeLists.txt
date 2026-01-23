@@ -14,7 +14,7 @@ SET(files_core
 	idpool.h
 	Memory_ass.h
 	memory_cpp.cc
-	
+	Arena_Allocator.h
 	)
 SOURCE_GROUP("core" FILES ${files_core})
 	
