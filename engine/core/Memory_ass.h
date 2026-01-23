@@ -3,13 +3,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <mutex>
-//struct AllocationMetrics
-//{
-//	
-//	
-//	
-//};
-//static AllocationMetrics s_AllocationMetrics;
 
 class Memory
 {
@@ -23,8 +16,8 @@ private:
 	Memory()=default;
 	
 public:
-	Memory(const Memory&) = delete;
-	//Memory& operator=(const Memory&) = delete;
+
+	Memory(const Memory&) = delete;	
 	static Memory &GetInstance()
 
 	{
@@ -47,6 +40,14 @@ public:
 		std::cout << "total allocated: " << totalAllocated << " bytes\n";
 		std::cout << "total freed: " << totalFreed << " bytes\n";
 		std::cout << "Current Memory Usage: " << CurrentUsage() << " bytes\n";
+		if (CurrentUsage() != 0)
+		{
+			std::cout << "Memory Leak Detected!\n";
+		}
+		else
+		{
+			std::cout << "No Memory Leak Detected.\n";
+		}
 	}
 
 };

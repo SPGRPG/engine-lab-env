@@ -13,8 +13,6 @@ using namespace std;
 int
 main(int argc, const char** argv)
 {
-	
-
 	Game::SpaceGameApp app;
 	if (app.Open())
 	{
@@ -23,7 +21,6 @@ main(int argc, const char** argv)
 	}
 	
 	app.Exit();
-	
 	Memory::GetInstance().PrintMemoryUsage();
 	return 0;
 	
