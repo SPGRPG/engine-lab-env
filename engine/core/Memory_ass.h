@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <mutex>
-
 class Memory
 {
 private:
